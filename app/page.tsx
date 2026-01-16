@@ -16,7 +16,7 @@ export default function Home() {
             <div className="relative w-44 h-44 md:w-52 md:h-52 rotate-[-3deg] rounded-2xl overflow-hidden bg-white shadow-2xl ring-1 ring-slate-200">
               <div className="absolute inset-0 pointer-events-none ring-4 ring-white/90" />
               <Image
-                src="/images/headshot.jpg"
+                src="/images/Headshot.jpg"
                 alt="Aadit Noronha headshot"
                 fill
                 priority
