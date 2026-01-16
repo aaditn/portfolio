@@ -4,7 +4,7 @@ type: project
 image: /images/ARC.png
 title: "ARC — Pathfinding & Controls Lead (ROS2)"
 permalink: projects/ARC
-date: 2026-01-15
+date: 2026-01-11
 labels:
   - C++
   - Python

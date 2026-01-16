@@ -4,7 +4,7 @@ type: project
 image: /images/Flux_Front.png
 title: "Flux — LEDs Syncing to Music"
 permalink: projects/Flux
-date: 2026-01-12
+date: 2026-01-11
 labels:
     - Embedded
     - DSP

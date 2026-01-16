@@ -10,6 +10,8 @@ export default function Home() {
       {/* --- Section 1: Professional Bio --- */}
       <section className="max-w-5xl mx-auto pt-24 pb-16 px-6">
         <div className="flex flex-col md:flex-row items-center gap-10">
+          
+          {/* Headshot Commented Out
           <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white rotate-3">
              <img 
                src="/images/headshot.jpg" 
@@ -17,10 +19,15 @@ export default function Home() {
                className="w-full h-full object-cover" 
              />
           </div>
+          */}
           
           <div className="max-w-2xl text-center md:text-left">
-            <h1 className="text-5xl font-extrabold tracking-tight mb-2">Aadit Noronha</h1>
-            <p className="text-xl text-blue-600 font-semibold mb-6">Software & Robotics Engineer</p>
+            <h1 className="text-5xl font-extrabold tracking-tight mb-2">
+              Aadit Noronha
+            </h1>
+            <p className="text-xl text-blue-600 font-semibold mb-6">
+              Software & Robotics Engineer
+            </p>
             <p className="text-lg text-slate-600 leading-relaxed">
               I specialize in high-performance control systems, ML in robotics, and full-stack systems. 
               From world-finalist robotics stacks to embedded systems, I build projects that bridge the gap between code and hardware.
@@ -48,11 +55,11 @@ export default function Home() {
                 
                 {/* Header Image */}
                 <div className="h-56 overflow-hidden relative">
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                    />
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                  />
                 </div>
 
                 {/* Placard Content */}
@@ -62,8 +69,11 @@ export default function Home() {
                   </h4>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {project.labels.slice(0, 3).map(label => (
-                      <span key={label} className="text-[10px] uppercase tracking-wider font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">
+                    {project.labels.slice(0, 3).map((label) => (
+                      <span 
+                        key={label} 
+                        className="text-[10px] uppercase tracking-wider font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md"
+                      >
                         {label}
                       </span>
                     ))}

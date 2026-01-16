@@ -4,7 +4,7 @@ type: project
 image: /images/Ventura_Product.png
 title: "Apple Year 2 — Facial Recognition Necklace"
 permalink: projects/Necklace
-date: 2024-07-01
+date: 2023-07-01
 order: 3.1
 labels:
   - Javascript
