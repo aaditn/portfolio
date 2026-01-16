@@ -12,7 +12,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white rotate-3">
              <img 
-               src="/images/headshot.png" 
+               src="/images/Headshot.png" 
                alt="Professional Headshot" 
                className="w-full h-full object-cover" 
              />
