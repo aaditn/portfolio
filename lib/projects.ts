@@ -6,6 +6,8 @@ import html from 'remark-html';
 
 const projectsDirectory = path.join(process.cwd(), 'content');
 
+const excludedSlugs = new Set(['Onewheel']);
+
 export interface ProjectData {
   slug: string;
   title: string;
@@ -29,15 +31,18 @@ export function getSortedProjectsData(): ProjectData[] {
       : matterResult.data.date;
 
     const rawPermalink = matterResult.data.permalink || '';
+    const slug = rawPermalink.split('/').pop() || fileName.replace(/\.md$/, '');
+    if (excludedSlugs.has(slug)) return null;
+
     return {
-      slug: rawPermalink.split('/').pop() || fileName.replace(/\.md$/, ''),
+      slug,
       ...(matterResult.data as any),
       date: dateValue,
     };
-  });
+  }).filter((p): p is ProjectData => p !== null);
 
   // Explicit ordering for homepage placards (fallback to date for anything else).
-  const featuredOrder = ['ARC', 'FIRST', 'Necklace', 'Seesaw', 'Flux', 'Onewheel'];
+  const featuredOrder = ['ARC', 'FIRST', 'Necklace', 'Seesaw', 'Flux'];
   return allProjectsData.sort((a, b) => {
     const aIdx = featuredOrder.indexOf(a.slug);
     const bIdx = featuredOrder.indexOf(b.slug);
@@ -53,6 +58,7 @@ export function getSortedProjectsData(): ProjectData[] {
 
 export async function getProjectData(slug: string) {
   if (!slug) throw new Error("Project slug is undefined");
+  if (excludedSlugs.has(slug)) throw new Error(`Project not found for slug: ${slug}`);
 
   const fileNames = fs.readdirSync(projectsDirectory);
   const matchedFile = fileNames.find(fileName => {
@@ -61,7 +67,11 @@ export async function getProjectData(slug: string) {
     const matterResult = matter(fileContents);
     if (!matterResult.data.permalink) return false;
     const projectPermalink = matterResult.data.permalink.toLowerCase().replace(/\/$/, '');
-    return projectPermalink.endsWith(slug.toLowerCase());
+    const matched = projectPermalink.endsWith(slug.toLowerCase());
+    if (!matched) return false;
+
+    const resolvedSlug = projectPermalink.split('/').pop() || '';
+    return !excludedSlugs.has(resolvedSlug);
   });
 
   if (!matchedFile) throw new Error(`Project not found for slug: ${slug}`);

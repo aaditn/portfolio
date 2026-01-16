@@ -2,7 +2,7 @@
 layout: project
 type: project
 image: /images/Seesaw_Mechanical.png
-title: "Apple Year 1 -- Energy Generating Seesaw"
+title: "Apple Year 1 — Energy Generating Seesaw"
 permalink: projects/Seesaw
 date: 2024-07-01
 labels:
@@ -14,7 +14,7 @@ labels:
 summary: "An energy-harvesting seesaw project with an iOS data app and a Raspberry Pi + Flask backend for logging and visualization."
 ---
 
-### Apple Year 1 -- Energy Generating Seesaw
+### Apple Year 1 — Energy Generating Seesaw
 
 Spent a summer at an engineering camp hosted by Apple building an energy-generating seesaw paired with a full-stack iOS data app.
 

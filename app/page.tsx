@@ -35,7 +35,7 @@ export default function Home() {
             </p>
             <p className="text-lg text-slate-600 leading-relaxed">
               I specialize in high-performance control systems, ML in robotics, and full-stack systems. 
-              From world-finalist robotics stacks to embedded systems, I build projects that bridge the gap between code and hardware.
+              From world-finalist robotics stacks to embedded systems, I build projects at the intersection of programming, control, and hardware.
             </p>
           </div>
 
