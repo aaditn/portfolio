@@ -1,65 +1,89 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { getSortedProjectsData } from '../lib/projects';
 
 export default function Home() {
+  const projects = getSortedProjectsData();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-slate-50 text-slate-900">
+      
+      {/* --- Section 1: Professional Bio --- */}
+      <section className="max-w-5xl mx-auto pt-24 pb-16 px-6">
+        <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white rotate-3">
+             <img 
+               src="/images/headshot.jpg" 
+               alt="Professional Headshot" 
+               className="w-full h-full object-cover" 
+             />
+          </div>
+          
+          <div className="max-w-2xl text-center md:text-left">
+            <h1 className="text-5xl font-extrabold tracking-tight mb-2">Aadit Noronha</h1>
+            <p className="text-xl text-blue-600 font-semibold mb-6">Software & Robotics Engineer</p>
+            <p className="text-lg text-slate-600 leading-relaxed">
+              I specialize in high-performance control systems, ML in robotics, and full-stack systems. 
+              From world-finalist robotics stacks to embedded systems, I build projects that bridge the gap between code and hardware.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* --- Section 2: Horizontal Scroll Project View --- */}
+      <section className="w-full py-16 bg-white border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-6 mb-10">
+          <h3 className="text-3xl font-bold tracking-tight">Featured Projects</h3>
+          <p className="text-slate-500">Scroll horizontally to explore my work</p>
         </div>
-      </main>
-    </div>
+
+        {/* Horizontal Container */}
+        <div className="flex overflow-x-auto pb-12 px-6 gap-8 snap-x snap-mandatory scrollbar-hide">
+          {projects.map((project) => (
+            <Link 
+              key={project.slug} 
+              href={`/projects/${project.slug}`}
+              className="snap-center shrink-0"
+            >
+              <div className="w-[350px] h-[500px] bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col group border border-slate-100">
+                
+                {/* Header Image */}
+                <div className="h-56 overflow-hidden relative">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                    />
+                </div>
+
+                {/* Placard Content */}
+                <div className="p-6 flex flex-col flex-grow">
+                  <h4 className="text-2xl font-bold mb-3 text-slate-800 leading-tight">
+                    {project.title}
+                  </h4>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.labels.slice(0, 3).map(label => (
+                      <span key={label} className="text-[10px] uppercase tracking-wider font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md">
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="text-slate-600 text-sm leading-relaxed line-clamp-4 mb-4">
+                    {project.summary}
+                  </p>
+                  
+                  <div className="mt-auto text-blue-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                    View Project Details <span>&rarr;</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+          {/* Spacer for end of scroll */}
+          <div className="shrink-0 w-6" />
+        </div>
+      </section>
+    </main>
   );
 }

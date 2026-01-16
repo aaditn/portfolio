@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
+// tailwind.config.ts
+import type { Config } from "tailwindcss";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require('@tailwindcss/typography'), // Add this line
+  ],
 };
-
-export default nextConfig;
+export default config;
