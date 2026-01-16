@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
@@ -25,8 +26,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* app/globals.css */
-
 @layer utilities {
   /* Force all text inside the article to be black */
   .prose p, 
@@ -48,18 +47,15 @@ body {
     font-weight: 800 !important;
   }
 
-  /* Make the background strictly white */
   body {
     background-color: #ffffff;
     color: #000000;
   }
 }
 
-/* Enhanced subpage (markdown) styles */
 @layer components {
-  /* Lead paragraph styling for longer descriptions */
   .prose p:first-of-type {
-    font-size: 1.125rem; /* slightly larger */
+    font-size: 1.125rem;
     line-height: 1.9;
     color: #111827;
     font-weight: 600;
@@ -67,7 +63,6 @@ body {
     margin-bottom: 1rem;
   }
 
-  /* Improve image presentation inside markdown content */
   .prose img {
     display: block;
     margin: 2rem auto;
@@ -78,7 +73,6 @@ body {
     border: 1px solid rgba(15,23,42,0.04);
   }
 
-  /* Figures and captions */
   .prose figure {
     margin: 2.25rem 0;
     display: block;
@@ -88,10 +82,9 @@ body {
   .prose figcaption {
     margin-top: 0.75rem;
     font-size: 0.95rem;
-    color: #6b7280; /* muted gray */
+    color: #6b7280;
   }
 
-  /* Make long paragraphs easier to read */
   .prose p {
     max-width: 70ch;
     margin-left: auto;
@@ -101,7 +94,6 @@ body {
     color: #0f172a;
   }
 
-  /* Stylish blockquotes as callouts */
   .prose blockquote {
     background: linear-gradient(90deg, rgba(14,165,233,0.06), rgba(59,130,246,0.03));
     border-left: 4px solid rgba(14,165,233,0.35);
@@ -111,7 +103,6 @@ body {
     margin: 1.25rem auto;
   }
 
-  /* Code blocks and inline code */
   .prose pre {
     border-radius: 0.75rem;
     padding: 1rem 1rem;
@@ -128,7 +119,6 @@ body {
     font-size: 0.95em;
   }
 
-  /* Tables: subtle borders and zebra rows */
   .prose table {
     width: 100%;
     border-collapse: collapse;
