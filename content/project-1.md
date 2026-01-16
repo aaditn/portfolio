@@ -6,10 +6,10 @@ title: "Onewheel"
 permalink: projects/Onewheel
 date: 2025-06-01
 labels:
-  - High Current Electronics
-  - Arduino
-  - C++
   - Control
+  - C++
+  - Arduino
+  - High Current Electronics
 summary: "I built a self-balancing hoverboard device capable of outputting 1000W of power and reaching speeds of over 25 MPH."
 ---
 

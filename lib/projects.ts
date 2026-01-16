@@ -35,7 +35,20 @@ export function getSortedProjectsData(): ProjectData[] {
       date: dateValue,
     };
   });
-  return allProjectsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+
+  // Explicit ordering for homepage placards (fallback to date for anything else).
+  const featuredOrder = ['ARC', 'FIRST', 'Necklace', 'Seesaw', 'Flux', 'Onewheel'];
+  return allProjectsData.sort((a, b) => {
+    const aIdx = featuredOrder.indexOf(a.slug);
+    const bIdx = featuredOrder.indexOf(b.slug);
+    const aFeatured = aIdx !== -1;
+    const bFeatured = bIdx !== -1;
+
+    if (aFeatured && bFeatured) return aIdx - bIdx;
+    if (aFeatured) return -1;
+    if (bFeatured) return 1;
+    return a.date < b.date ? 1 : -1;
+  });
 }
 
 export async function getProjectData(slug: string) {

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getSortedProjectsData } from '../lib/projects';
 
 export default function Home() {
@@ -9,19 +10,23 @@ export default function Home() {
       
       {/* --- Section 1: Professional Bio --- */}
       <section className="max-w-5xl mx-auto pt-24 pb-16 px-6">
-        <div className="flex flex-col md:flex-row items-center gap-10">
+        <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
           
-          {/* Headshot Commented Out
-          <div className="w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-4 border-white rotate-3">
-             <img 
-               src="/images/headshot.jpg" 
-               alt="Professional Headshot" 
-               className="w-full h-full object-cover" 
-             />
+          <div className="shrink-0">
+            <div className="relative w-44 h-44 md:w-52 md:h-52 rotate-[-3deg] rounded-2xl overflow-hidden bg-white shadow-2xl ring-1 ring-slate-200">
+              <div className="absolute inset-0 pointer-events-none ring-4 ring-white/90" />
+              <Image
+                src="/images/headshot.jpg"
+                alt="Aadit Noronha headshot"
+                fill
+                priority
+                sizes="(max-width: 768px) 176px, 208px"
+                className="object-cover"
+              />
+            </div>
           </div>
-          */}
           
-          <div className="max-w-2xl text-center md:text-left">
+          <div className="flex-1 max-w-2xl text-center md:text-left">
             <h1 className="text-5xl font-extrabold tracking-tight mb-2">
               Aadit Noronha
             </h1>
@@ -32,6 +37,22 @@ export default function Home() {
               I specialize in high-performance control systems, ML in robotics, and full-stack systems. 
               From world-finalist robotics stacks to embedded systems, I build projects that bridge the gap between code and hardware.
             </p>
+          </div>
+
+          <div className="shrink-0 w-full md:w-auto text-center md:text-right text-sm text-slate-600">
+            <div className="font-semibold text-slate-900">Contact</div>
+            <a
+              className="block hover:text-blue-700 transition-colors"
+              href="mailto:aadit.noronha@gmail.com"
+            >
+              aadit.noronha@gmail.com
+            </a>
+            <a
+              className="block hover:text-blue-700 transition-colors"
+              href="tel:+14084823517"
+            >
+              (408) 482 3517
+            </a>
           </div>
         </div>
       </section>

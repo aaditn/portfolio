@@ -6,9 +6,9 @@ title: "FIRST Robotics — Software Lead"
 permalink: projects/FIRST
 date: 2025-05-01
 labels:
+  - Robotics
   - Java
   - Kotlin
-  - Robotics
   - Localization
 summary: "Led the software team for a world-finalist FIRST Robotics team; built a 36,000+ line high-performance control and localization stack enabling top competition performance."
 ---

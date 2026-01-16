@@ -6,10 +6,10 @@ title: "ARC — Pathfinding & Controls Lead (ROS2)"
 permalink: projects/ARC
 date: 2026-01-11
 labels:
-  - C++
-  - Python
   - ROS2
   - Pathfinding
+  - C++
+  - Python
   - Optimization
 summary: "Mentored a team to design a high-performance ROS2 pathfinding and optimization pipeline using A*, Bézier mappings, and gradient descent."
 ---

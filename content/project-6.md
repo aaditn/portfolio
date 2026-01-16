@@ -7,11 +7,12 @@ permalink: projects/Necklace
 date: 2023-07-01
 order: 3.1
 labels:
-  - Javascript
+  - HRI
+  - OpenCV
   - Swift
   - Python
   - Electrical Design
-  - Computer Vision
+  - Javascript
 summary: "An assistive necklace prototype for visually impaired users using facial and object recognition to provide audio/haptic feedback."
 ---
 
@@ -24,5 +25,6 @@ I implemented the recognition models using OpenCV's Haar Cascades and designed a
 **Highlights:**
 
 * **Full Stack Integration:** Captured and streamed sensor data from embedded hardware to a Flask backend, paired with an iOS frontend for visualization and user interaction.
-* **Computer Vision:** Built facial and object recognition pipelines using OpenCV, integrated with a prioritized messaging system to surface the most relevant contextual information.
+* **OpenCV:** Built facial and object recognition pipelines using OpenCV (Haar Cascades), integrated with a prioritized messaging system to surface the most relevant contextual information.
+* **HRI:** Designed the end-to-end user interaction loop (audio/haptics) with low-latency, duplicate-free messaging and a focus on clarity and cognitive load.
 * **User Experience:** Designed low-latency, duplicate-free notification delivery using a priority queue and ElevenLabs TTS for natural auditory feedback.
