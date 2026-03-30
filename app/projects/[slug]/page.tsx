@@ -1,6 +1,8 @@
 import { getProjectData, getSortedProjectsData } from '@/lib/projects';
 import Link from 'next/link';
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const projects = getSortedProjectsData();
   return projects.map((project) => ({

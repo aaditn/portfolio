@@ -1,120 +1,163 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { getSortedProjectsData } from '../lib/projects';
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import EducationSection from "./components/EducationSection";
+import Footer from "./components/Footer";
+import ButterflyFollower from "./components/ButterflyFollower";
 
 export default function Home() {
-  const projects = getSortedProjectsData();
-
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-900">
-      
-      {/* --- Section 1: Professional Bio --- */}
+    <main className="min-h-screen bg-gradient-to-b from-[#ffffff] to-[#eef6ff] text-black selection:bg-[#93c5fd]/40 relative overflow-hidden">
+      <ButterflyFollower />
+
+      {/* ── Hero Section ── */}
       <section className="max-w-5xl mx-auto pt-24 pb-16 px-6">
         <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
-          
           <div className="shrink-0">
-            <div className="relative w-44 h-44 md:w-52 md:h-52 rotate-[-3deg] rounded-2xl overflow-hidden bg-white shadow-2xl ring-1 ring-slate-200">
-              <div className="absolute inset-0 pointer-events-none ring-4 ring-white/90" />
+            <div className="relative w-40 h-52 md:w-48 md:h-64 rounded-2xl overflow-hidden shadow-lg ring-1 ring-blue-100">
               <Image
-                src="/images/Headshot.jpg"
-                alt="Aadit Noronha headshot"
+                src="/Manas_Sood_Profile_Pic.JPG"
+                alt="Manas Sood"
                 fill
                 priority
-                sizes="(max-width: 768px) 176px, 208px"
-                className="object-cover"
+                sizes="(max-width: 768px) 160px, 192px"
+                className="object-cover object-top"
               />
             </div>
           </div>
-          
           <div className="flex-1 max-w-2xl text-center md:text-left">
-            <h1 className="text-5xl font-extrabold tracking-tight mb-2">
-              Aadit Noronha
+            <h1
+              className="text-5xl md:text-6xl font-extrabold tracking-tight mb-2"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Manas Sood
             </h1>
-            <p className="text-xl text-blue-600 font-semibold mb-6">
-              Software & Robotics Engineer
+            <p className="text-2xl md:text-3xl text-[#2563eb] font-semibold mb-6">
+              Financial Literacy Leader &amp; Strategic Consultant
             </p>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              I specialize in high-performance control systems, ML in robotics, and full-stack systems. 
-              From world-finalist robotics stacks to embedded systems, I build projects at the intersection of programming, control, and hardware.
+            <p className="text-xl text-slate-700 leading-relaxed">
+              I have repeatedly transformed ideas and organisations into
+              high-impact successes by leveraging unorthodox strategies, rigorous
+              analysis, and talent-driven execution.
             </p>
           </div>
 
-          <div className="shrink-0 w-full md:w-auto text-center md:text-right text-sm text-slate-600">
-            <div className="font-semibold text-slate-900">Contact</div>
+          <div className="shrink-0 w-full md:w-auto text-center md:text-right text-sm text-slate-700">
+            <div className="font-semibold text-black mb-1">Contact</div>
             <a
-              className="block hover:text-blue-700 transition-colors"
-              href="mailto:aadit.noronha@gmail.com"
+              className="block hover:text-[#2563eb] transition-colors"
+              href="mailto:soodmanas08@gmail.com"
             >
-              aadit.noronha@gmail.com
+              soodmanas08@gmail.com
             </a>
             <a
-              className="block hover:text-blue-700 transition-colors"
-              href="tel:+14084823517"
+              className="block hover:text-[#2563eb] transition-colors"
+              href="tel:+12139162259"
             >
-              (408) 482 3517
+              +1 (213) 916 2259
+            </a>
+            <a
+              className="block hover:text-[#2563eb] transition-colors"
+              href="tel:+919810952002"
+            >
+              +91 98109 52002
             </a>
           </div>
         </div>
       </section>
 
-      {/* --- Section 2: Horizontal Scroll Project View --- */}
-      <section className="w-full py-16 bg-white border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-6 mb-10">
-          <h3 className="text-3xl font-bold tracking-tight">Featured Projects</h3>
-          <p className="text-slate-500">Scroll horizontally to explore my work</p>
-        </div>
-
-        {/* Horizontal Container */}
-        <div className="flex overflow-x-auto pb-12 px-6 gap-8 snap-x snap-mandatory scrollbar-hide">
-          {projects.map((project) => (
-            <Link 
-              key={project.slug} 
-              href={`/projects/${project.slug}`}
-              className="snap-center shrink-0"
-            >
-              <div className="w-[350px] h-[500px] bg-slate-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col group border border-slate-100">
-                
-                {/* Header Image */}
-                <div className="h-56 overflow-hidden relative">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                  />
-                </div>
-
-                {/* Placard Content */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <h4 className="text-2xl font-bold mb-3 text-slate-800 leading-tight">
-                    {project.title}
-                  </h4>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.labels.slice(0, 3).map((label) => (
-                      <span 
-                        key={label} 
-                        className="text-[10px] uppercase tracking-wider font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-md"
-                      >
-                        {label}
-                      </span>
-                    ))}
-                  </div>
-
-                  <p className="text-slate-600 text-sm leading-relaxed line-clamp-4 mb-4">
-                    {project.summary}
-                  </p>
-                  
-                  <div className="mt-auto text-blue-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
-                    View Project Details <span>&rarr;</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-          {/* Spacer for end of scroll */}
-          <div className="shrink-0 w-6" />
-        </div>
+      {/* ═══ Section 1: Projects (title left, photo right) ═══ */}
+      <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+        <Link href="/projects" className="flex flex-col md:flex-row items-center gap-12 group cursor-pointer">
+          <div className="flex-1">
+            <h2 className="text-[4.5rem] md:text-[5.5rem] font-extrabold leading-none tracking-tight mb-6">
+              Projects
+            </h2>
+            <p className="text-2xl md:text-3xl text-slate-600 leading-snug">
+              From educating the world about taxation to climate mitigation
+            </p>
+            <span className="inline-block mt-8 text-lg font-semibold text-blue-600 group-hover:translate-x-2 transition-transform">
+              Explore &rarr;
+            </span>
+          </div>
+          <div className="shrink-0 w-full md:w-[400px] aspect-[1600/1557] rounded-3xl overflow-hidden border border-blue-200 relative">
+            <Image
+              src="/2.jpg"
+              alt="Projects"
+              fill
+              className="object-contain"
+              sizes="400px"
+            />
+          </div>
+        </Link>
       </section>
+
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      </div>
+
+      {/* ═══ Section 2: Research (photo left, title right) ═══ */}
+      <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+        <Link href="/research" className="flex flex-col md:flex-row-reverse items-center gap-12 group cursor-pointer">
+          <div className="flex-1 md:text-right">
+            <h2 className="text-[4.5rem] md:text-[5.5rem] font-extrabold leading-none tracking-tight mb-6">
+              Research, Awards &amp; Competitions
+            </h2>
+            <p className="text-2xl md:text-3xl text-slate-600 leading-snug">
+              Economics research and national level awards
+            </p>
+            <span className="inline-block mt-8 text-lg font-semibold text-blue-600 group-hover:translate-x-2 transition-transform">
+              Explore &rarr;
+            </span>
+          </div>
+          <div className="shrink-0 w-full md:w-[400px] h-[280px] rounded-3xl overflow-hidden border border-blue-200 relative">
+            <Image
+              src="/6.jpg"
+              alt="Research, Awards and Competitions"
+              fill
+              className="object-cover"
+              sizes="400px"
+            />
+          </div>
+        </Link>
+      </section>
+
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+      </div>
+
+      {/* ═══ Section 3: Hobbies (title left, photo right) ═══ */}
+      <section className="max-w-6xl mx-auto px-6 py-20 md:py-28">
+        <Link href="/hobbies" className="flex flex-col md:flex-row items-center gap-12 group cursor-pointer">
+          <div className="flex-1">
+            <h2 className="text-[4.5rem] md:text-[5.5rem] font-extrabold leading-none tracking-tight mb-6">
+              Hobbies
+            </h2>
+            <p className="text-2xl md:text-3xl text-slate-600 leading-snug">
+              Everyone&apos;s fun side can be impact-driven and smart
+            </p>
+            <span className="inline-block mt-8 text-lg font-semibold text-blue-600 group-hover:translate-x-2 transition-transform">
+              Explore &rarr;
+            </span>
+          </div>
+          <div className="shrink-0 w-full md:w-[400px] h-[280px] rounded-3xl overflow-hidden border border-blue-200 relative">
+            <Image
+              src="/12.png"
+              alt="Hobbies"
+              fill
+              className="object-cover"
+              sizes="400px"
+            />
+          </div>
+        </Link>
+      </section>
+
+      {/* ── Education ── */}
+      <EducationSection />
+
+      {/* ── Footer ── */}
+      <Footer />
     </main>
   );
 }
